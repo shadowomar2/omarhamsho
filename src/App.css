@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* image on the left + black -> white gradient across the whole area */
+  /* try referencing the image relative to src (project root): ../Omar.jpg
+    If you still see a resolution error, move Omar.jpg into /public and use url('/Omar.jpg') instead. */
+  background-image: url('../Omar.jpg'), linear-gradient(90deg, #c7c7c7 0%, #262525 100%);
+  /* anchor image on the right now */
+  background-position: right center, center;
+  background-size: 40% auto, cover; /* image takes left 40%, adjust as needed */
+  background-repeat: no-repeat, no-repeat;
+  background-color: #000; /* fallback */
+
+  /* convert visuals to grayscale for strict B/W look */
+  filter:   grayscale(60%) contrast(110%);
+
+  position: relative;
+  overflow: hidden;
+}
+.bg-right  {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: rgb(115, 115, 115);
+  
+ 
+  filter:  saturate(0.9) grayscale(2) brightness(0.9);
+  transform: scale(1); /* avoid hard edges */
+  z-index: 1;
+ 
+  /* mask fades leftwards so the blurred right image smoothly transitions into the gradient */
+  mask-image: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,1) 100%);
+}
+/* Natural shadow animation - sunrise effect */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+  ellipse 50vw 25vw at 20% 10%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    transparent 70%
+  );
+  
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Additional shadow layer for more depth */
+.app::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+  ellipse 25vw 12.5vw at 80% 20%,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 50%
+  );
+ 
+  z-index: 1;
+  pointer-events: none;
+}
+
+ 
+ 
+
+/* Title Styles */
+.title {
+  position: absolute;
+  top: 2vw;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+ 
+}
+ 
+
+.title h1 {
+  font-size: 10dvw;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0;
+  animation: naturalShadowTitle 6s ease-in-out infinite;
+}
+
+@keyframes naturalShadowTitle {
+  0% {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+  
+  }
+  25% {
+    text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.7);
+  
+  }
+  50% {
+    text-shadow: 8px 8px 16px rgba(0, 0, 0, 0.8);
+    
+  }
+  75% {
+    text-shadow: 7px 7px 14px rgba(0, 0, 0, 0.75);
+   
+  }
+  100% {
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.65);
+   
+  }
+}
+
+/* Letters Container */
+.letters-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10.8vw;
+  width: 100%;
+  height: 100%;
+  margin-top: 7.3vw;
+   
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0.5vw 1vw rgba(0, 0, 0, 0.4));
+}
+
+ 
+
+/* Letter O Styles - Made Bigger and Side by Side */
+.letter-o {
+  position: relative;
+  border: 2vw solid #000; /* black border */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06); /* subtle white tint on top of gradient */
+  backdrop-filter: blur(0.4vw);
+  width: 40%;
+  height: 95%;
+  
+}
+ 
+
+.o-content {
+  font-size: 7dvw;
+  font-weight: bold;
+  color: #fff; /* keep high contrast on darker left side */
+  text-transform: uppercase;
+  letter-spacing: 0.3vw;
+  text-shadow: 0 0.15vw 0.44vw rgba(0, 0, 0, 0.7);
+}
+
+/* Letter H Styles - Made to look like actual H letter and Side by Side */
+.letter-h {
+  position: relative;
+  width: 30%;
+    height: 90%;
+  
+}
+
+
+
+/* H letter structure using div elements - Updated for bigger size */
+.h-left-line {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px ;
+  width: 3vw;
+  background: #000;
+  z-index: 1;
+}
+
+.h-right-line {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  bottom: 0;
+  width: 3vw;
+  border-radius: 3px ;
+  background:#000;
+  z-index: 1;
+}
+
+.h-horizontal-line {
+  position: absolute;
+  border-radius: 3px ;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3vw;
+  background: #000;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* H Button Styles - Made to be part of the H letter with gradient colors */
+.h-button {
+  position: absolute;
+  width: 6vw;
+  height: 3vw;
+  border-radius: 0.7vw;
+  background: #000;
+  color: #fff;
+  font-size: 0.7dvw;
+  cursor: pointer;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: naturalShadowbutton 2s ease-in-out infinite;
+}
+ 
+
+.h-button:hover {
+  background: #fff;
+  color: #000;
+}
+.h-button.active {
+  background: #fff;
+  color: #000;
+ 
+  
+}
+@keyframes naturalShadowbutton {
+  0% {
+    filter: drop-shadow(0 0.5vw 1vw rgba(0, 0, 0, 0.4));
+    scale:1;
+  }
+  25% {
+    filter: drop-shadow(0 0.75vw 1.5vw rgba(0, 0, 0, 0.5));
+    scale:1.02;
+  }
+  50% {
+    filter: drop-shadow(0 1vw 2vw rgba(0, 0, 0, 0.6));
+    scale:1.05;
+  }
+  75% {
+    filter: drop-shadow(0 0.88vw 1.76vw rgba(0, 0, 0, 0.55));
+    scale:1.02;
+  }
+  100% {
+    filter: drop-shadow(0 0.62vw 1.24vw rgba(0, 0, 0, 0.45));
+    scale:1;
+  }
+}
+ 
+/* Button Positions - Integrated into H letter structure - Updated for bigger size */
+.top-left {
+  top: 0;
+  left:-1.5vw;
+}
+
+.top-right {
+  top:0;
+  right: -1.5vw;
+}
+
+.middle-left {
+  top: 50%;
+  left:0px;
+  transform: translateY(-50%);
+ 
+}
+
+.middle-right {
+  top: 50%;
+  right:0;
+  transform: translateY(-50%);
+   
+}
+.middle-middle {
+  top: 50%;
+   
+  right: 50%;
+  transform: translateY(-50%) translateX(50%);
+ 
+}
+
+.bottom-left {
+  bottom:  0;
+  left:-1.5vw;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: -1.5vw;
+}
+
+/* subtle overlay on the right (white side) to keep dark text readable if needed */
+.app .overlay-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.06) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* blurred left image layer to create a smooth transition from photo to gradient */
+
+/* content card inside O */
+.o-card {
+  width: 70%;
+  padding: 2vw;
+  text-align: center;
+  color: #fff;
+}
+.o-card h2 {
+  font-size: 1.4vw;
+  margin-bottom: 0.8vw;
+}
+.o-card p {
+  font-size: 0.9vw;
+  opacity: 0.9;
+  margin-bottom: 1.2vw;
+}
+.o-card .know-more {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.6vw 1.2vw;
+  border-radius: 0.6vw;
+  cursor: pointer;
+}
+
+/* circular info popup */
+.info-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: width 360ms ease, height 360ms ease, transform 360ms cubic-bezier(.22,.9,.32,1), opacity 200ms ease;
+  z-index: 100;
+  pointer-events: none;
+}
+.info-popup.open {
+  width: 60vw;
+  height: 60vw;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.info-popup .info-inner {
+  width: 90%;
+  height: 90%;
+  padding: 2vw;
+  overflow: auto;
+}
+.info-popup .info-close {
+  position: absolute;
+  right: 1.2vw;
+  top: 1.2vw;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2vw;
+  cursor: pointer;
+}
+/* circular indicator that moves to clicked H buttons */
+.h-indicator {
+  position: absolute;
+  width: 2.2vw;
+  height: 2.2vw;
+  border-radius: 50%;
+  background: #797373;
+  box-shadow: 0 0.3vw 0.6vw rgba(0,0,0,0.45);
+  transform: translate(-50%, -50%);
+  transition: left 450ms cubic-bezier(.22,.9,.32,1), top 450ms cubic-bezier(.22,.9,.32,1), opacity 300ms ease;
+  z-index: 4;
+  pointer-events: none;
+}
+
+
