@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/omarhamsho/static/css/main.28eb1028.css",
+    "main.js": "/omarhamsho/static/js/main.145831e8.js",
+    "static/media/Omar.jpg": "/omarhamsho/static/media/Omar.4c3b80a053e4e3028244.jpg",
+    "index.html": "/omarhamsho/index.html",
+    "main.28eb1028.css.map": "/omarhamsho/static/css/main.28eb1028.css.map",
+    "main.145831e8.js.map": "/omarhamsho/static/js/main.145831e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28eb1028.css",
+    "static/js/main.145831e8.js"
+  ]
+}
