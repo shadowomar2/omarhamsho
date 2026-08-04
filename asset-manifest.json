@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.aa8d5c00.css",
-    "main.js": "/static/js/main.2c5ee369.js",
+    "main.css": "/static/css/main.1334a14b.css",
+    "main.js": "/static/js/main.ab783610.js",
     "static/media/Omar Hamsho Ludwigsburg (1).pdf": "/static/media/Omar Hamsho Ludwigsburg (1).ac44c0eaba5799c92b22.pdf",
     "static/media/omar-photo.jpg": "/static/media/omar-photo.4c3b80a053e4e3028244.jpg",
     "static/media/cwsm.png": "/static/media/cwsm.401342c8502feaf48a75.png",
     "index.html": "/index.html",
-    "main.aa8d5c00.css.map": "/static/css/main.aa8d5c00.css.map",
-    "main.2c5ee369.js.map": "/static/js/main.2c5ee369.js.map"
+    "main.1334a14b.css.map": "/static/css/main.1334a14b.css.map",
+    "main.ab783610.js.map": "/static/js/main.ab783610.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa8d5c00.css",
-    "static/js/main.2c5ee369.js"
+    "static/css/main.1334a14b.css",
+    "static/js/main.ab783610.js"
   ]
 }
